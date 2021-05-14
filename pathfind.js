@@ -28,12 +28,12 @@ function pathfind(A, P, Q) {
     console.log("adj3:", adj3)
     let adj4 = [queue[0][0], queue[0][1]-1, queue[0][2]+1]
     console.log("adj4:", adj4)
-    test(adj1)
-    test(adj2)
-    test(adj3)  
-    test(adj4)
+    test(adj1, adj2, adj3, adj4)
+    test(adj2, adj1, adj3, adj4)
+    test(adj3, adj1, adj2, adj4)  
+    test(adj4, adj1, adj2, adj3)
   }
-  function test(adjacent) {
+  function test(adjacent, m1, m2, m3) {
   console.log("\nTesting:", adjacent)
     if (A[adjacent[1]][adjacent[0]] == true) {
       console.log("not blocked")
@@ -46,12 +46,17 @@ function pathfind(A, P, Q) {
         }
         else {
           console.log("Queue (pre-slice):", queue)
-          //if (adjacent === queue[0]) {
-
-          //}
-          queue.splice(0,1)
-          queue.push(adjacent)
-          console.log("Queue (post slice):", queue)
+          if (queue[0] === (m1 || m2 || m3)) {
+            console.log("Queue[0]=",queue[0], "m1:",m1, "m2:",m2, "m3", m3)
+            //queue.splice(0,1)
+            queue.push(adjacent)
+            console.log("Queue (now):", queue)
+          }
+          else {
+            queue.splice(0,1)
+            queue.push(adjacent)
+            console.log("Queue (post slice):", queue)
+          }
         }} 
       else {
         //position is already in array
