@@ -1,3 +1,5 @@
+module.exports.pathfind = pathfind
+
 const A = [
   [true, true, true, true, true],
   [true, false, false, false, true],
@@ -59,18 +61,18 @@ function pathfind(A, P, Q) {
           }
         }} 
       else {
-        //position is already in array
+        console.log("position is already in array")
       }} 
     else {
       console.log("blocked")
       //position is blocked
   }
   }
-  //for (i in queue) {
-  //  getAdjacent(i)
-  //}
+  for (i=0; i<queue.length; i++) {
+    getAdjacent(queue)
+  }
 }
-module.exports.pathfind = pathfind
+
 
 
 /*
